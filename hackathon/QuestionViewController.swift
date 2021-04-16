@@ -1,5 +1,5 @@
 //
-//  TipsViewController.swift
+//  QuestionViewController.swift
 //  hackathon
 //
 //  Created by maya on 2021/04/16.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TipsViewController: UIViewController {
+class QuestionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

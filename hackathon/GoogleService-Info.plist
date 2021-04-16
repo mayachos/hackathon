@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>209565491058-qaa2qupno99vqrsnlslhner9mqh5o2kq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.209565491058-qaa2qupno99vqrsnlslhner9mqh5o2kq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCW19NOkZWwipSAUnUnLAX3JwLIbmKD0yk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>209565491058</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.maya.hackathon</string>
+	<key>PROJECT_ID</key>
+	<string>moh-b-dffcb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>moh-b-dffcb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:209565491058:ios:3f5edbd173c8cb31b087eb</string>
+</dict>
+</plist>
