@@ -136,13 +136,13 @@
         <!--Root View Controller-->
         <scene sceneID="t6i-yx-49E">
             <objects>
-                <tableViewController id="gcQ-ci-jad" sceneMemberID="viewController">
+                <tableViewController id="gcQ-ci-jad" customClass="QuestionTableViewController" customModule="hackathon" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Na9-x9-TmS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="177" id="TVu-o1-UAt">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="177" id="TVu-o1-UAt" customClass="QuestionTableViewCell" customModule="hackathon" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="177"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TVu-o1-UAt" id="FNc-f7-mF2">
@@ -171,7 +171,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BestAnswer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIL-Yc-t9L">
-                                            <rect key="frame" x="177" y="145" width="91" height="21"/>
+                                            <rect key="frame" x="28" y="145" width="91" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -179,6 +179,12 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ansewerId" destination="ZIL-Yc-t9L" id="Ihg-zB-vGh"/>
+                                    <outlet property="category" destination="q0K-b7-HHO" id="YQt-Uf-S6E"/>
+                                    <outlet property="quesText" destination="Rbi-2u-cSL" id="WjH-dd-pgb"/>
+                                    <outlet property="user" destination="oIZ-yJ-Dj0" id="8c7-7w-tLZ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -3,16 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2346B16309E67AFF9C3DCFA2 /* Pods_hackathon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EFB7127265D5BE453FE5A0 /* Pods_hackathon.framework */; };
-		634D5FE32629C31900D95D54 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D5FE22629C31900D95D54 /* QuestionViewController.swift */; };
 		634D5FE72629C64F00D95D54 /* TipsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D5FE62629C64F00D95D54 /* TipsTableViewController.swift */; };
 		634D5FEA2629C8B700D95D54 /* TipsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D5FE92629C8B700D95D54 /* TipsTableViewCell.swift */; };
 		634D5FF22629D02500D95D54 /* tips_cell_Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634D5FF12629D02500D95D54 /* tips_cell_Info.swift */; };
 		634D5FF52629D6DA00D95D54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 634D5FF42629D6DA00D95D54 /* GoogleService-Info.plist */; };
+		6372117D2629DFFE00FAC18E /* QuestionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372117C2629DFFE00FAC18E /* QuestionTableViewController.swift */; };
+		637211822629E01F00FAC18E /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637211812629E01F00FAC18E /* QuestionTableViewCell.swift */; };
+		637211852629E04A00FAC18E /* que_cell_info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637211842629E04A00FAC18E /* que_cell_info.swift */; };
 		63C30A7C2629BC1400CF565F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C30A7B2629BC1400CF565F /* AppDelegate.swift */; };
 		63C30A7E2629BC1400CF565F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C30A7D2629BC1400CF565F /* SceneDelegate.swift */; };
 		63C30A802629BC1400CF565F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C30A7F2629BC1400CF565F /* ViewController.swift */; };
@@ -24,11 +26,13 @@
 /* Begin PBXFileReference section */
 		15EFB7127265D5BE453FE5A0 /* Pods_hackathon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hackathon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		198F3AD33049ABF01C829320 /* Pods-hackathon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hackathon.debug.xcconfig"; path = "Target Support Files/Pods-hackathon/Pods-hackathon.debug.xcconfig"; sourceTree = "<group>"; };
-		634D5FE22629C31900D95D54 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		634D5FE62629C64F00D95D54 /* TipsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTableViewController.swift; sourceTree = "<group>"; };
 		634D5FE92629C8B700D95D54 /* TipsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsTableViewCell.swift; sourceTree = "<group>"; };
 		634D5FF12629D02500D95D54 /* tips_cell_Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tips_cell_Info.swift; sourceTree = "<group>"; };
 		634D5FF42629D6DA00D95D54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6372117C2629DFFE00FAC18E /* QuestionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewController.swift; sourceTree = "<group>"; };
+		637211812629E01F00FAC18E /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		637211842629E04A00FAC18E /* que_cell_info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = que_cell_info.swift; sourceTree = "<group>"; };
 		63C30A782629BC1400CF565F /* hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C30A7B2629BC1400CF565F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C30A7D2629BC1400CF565F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +62,6 @@
 				198F3AD33049ABF01C829320 /* Pods-hackathon.debug.xcconfig */,
 				89BDAC28053924406274C798 /* Pods-hackathon.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -86,10 +89,12 @@
 				63C30A7B2629BC1400CF565F /* AppDelegate.swift */,
 				63C30A7D2629BC1400CF565F /* SceneDelegate.swift */,
 				63C30A7F2629BC1400CF565F /* ViewController.swift */,
-				634D5FE22629C31900D95D54 /* QuestionViewController.swift */,
 				634D5FE62629C64F00D95D54 /* TipsTableViewController.swift */,
-				634D5FF12629D02500D95D54 /* tips_cell_Info.swift */,
 				634D5FE92629C8B700D95D54 /* TipsTableViewCell.swift */,
+				634D5FF12629D02500D95D54 /* tips_cell_Info.swift */,
+				6372117C2629DFFE00FAC18E /* QuestionTableViewController.swift */,
+				637211812629E01F00FAC18E /* QuestionTableViewCell.swift */,
+				637211842629E04A00FAC18E /* que_cell_info.swift */,
 				63C30A812629BC1400CF565F /* Main.storyboard */,
 				63C30A842629BC1600CF565F /* Assets.xcassets */,
 				63C30A862629BC1600CF565F /* LaunchScreen.storyboard */,
@@ -223,9 +228,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				634D5FF22629D02500D95D54 /* tips_cell_Info.swift in Sources */,
+				637211822629E01F00FAC18E /* QuestionTableViewCell.swift in Sources */,
+				6372117D2629DFFE00FAC18E /* QuestionTableViewController.swift in Sources */,
 				634D5FE72629C64F00D95D54 /* TipsTableViewController.swift in Sources */,
+				637211852629E04A00FAC18E /* que_cell_info.swift in Sources */,
 				63C30A802629BC1400CF565F /* ViewController.swift in Sources */,
-				634D5FE32629C31900D95D54 /* QuestionViewController.swift in Sources */,
 				63C30A7C2629BC1400CF565F /* AppDelegate.swift in Sources */,
 				63C30A7E2629BC1400CF565F /* SceneDelegate.swift in Sources */,
 				634D5FEA2629C8B700D95D54 /* TipsTableViewCell.swift in Sources */,
