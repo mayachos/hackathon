@@ -13,6 +13,7 @@
 		63C30A832629BC1400CF565F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C30A812629BC1400CF565F /* Main.storyboard */; };
 		63C30A852629BC1600CF565F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C30A842629BC1600CF565F /* Assets.xcassets */; };
 		63C30A882629BC1600CF565F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C30A862629BC1600CF565F /* LaunchScreen.storyboard */; };
+		63C30A912629BE6900CF565F /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C30A902629BE6900CF565F /* TipsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		63C30A842629BC1600CF565F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63C30A872629BC1600CF565F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63C30A892629BC1600CF565F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63C30A902629BE6900CF565F /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				63C30A7B2629BC1400CF565F /* AppDelegate.swift */,
 				63C30A7D2629BC1400CF565F /* SceneDelegate.swift */,
 				63C30A7F2629BC1400CF565F /* ViewController.swift */,
+				63C30A902629BE6900CF565F /* TipsViewController.swift */,
 				63C30A812629BC1400CF565F /* Main.storyboard */,
 				63C30A842629BC1600CF565F /* Assets.xcassets */,
 				63C30A862629BC1600CF565F /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			files = (
 				63C30A802629BC1400CF565F /* ViewController.swift in Sources */,
 				63C30A7C2629BC1400CF565F /* AppDelegate.swift in Sources */,
+				63C30A912629BE6900CF565F /* TipsViewController.swift in Sources */,
 				63C30A7E2629BC1400CF565F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
