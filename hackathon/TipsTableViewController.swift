@@ -13,6 +13,7 @@ class TipsTableViewController: UITableViewController {
     var category_id: Int!
     var comment: String!
     
+    
     var cellData = [tips_cell_info]()
 
     override func viewDidLoad() {
@@ -20,13 +21,13 @@ class TipsTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        let url: URL = URL(string: "")!
-        let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
-               print("data: \(data)")
-               print("response: \(response)")
-               print("error: \(error)")
-           })
-        task.resume()
+//        let url: URL = URL(string: "")!
+//        let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
+//               print("data: \(data)")
+//               print("response: \(response)")
+//               print("error: \(error)")
+//           })
+//        task.resume()
         
         cellData.append(tips_cell_info(user_id: 1111, category_id: 2222, comment: "text"))
 
@@ -56,6 +57,9 @@ class TipsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TipsTableViewCell
 
+        cell.layer.cornerRadius = 5.0
+        cell.layer.borderWidth = 3.0
+        cell.layer.borderColor = #colorLiteral(red: 0.3470362425, green: 0.7739748359, blue: 0.7306001782, alpha: 1)
         cell.setCell(info: cellData[indexPath.row])
         // Configure the cell...
 

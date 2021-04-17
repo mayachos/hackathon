@@ -13,6 +13,7 @@ class TipsTableViewCell: UITableViewCell {
     @IBOutlet var category: UILabel!
     @IBOutlet var tipsText: UILabel!
     @IBOutlet var user_Image: UIImageView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

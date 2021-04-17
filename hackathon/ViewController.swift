@@ -11,7 +11,7 @@ import GoogleSignIn
 
 class ViewController: UIViewController, GIDSignInDelegate {
     
-    @IBOutlet weak var signInButton: GIDSignInButton!
+    @IBOutlet weak var signInButton: UIButton!
     var userId: String!
 
     override func viewDidLoad() {
@@ -19,6 +19,10 @@ class ViewController: UIViewController, GIDSignInDelegate {
         // Do any additional setup after loading the view.
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        
+        signInButton.layer.cornerRadius = 5.0;
+        signInButton.layer.borderColor = #colorLiteral(red: 1, green: 0.9372162223, blue: 0, alpha: 1)
+        signInButton.layer.borderWidth = 2.0;
         
     }
     
