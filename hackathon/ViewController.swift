@@ -13,6 +13,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: UIButton!
     var userId: String = ""
+    var fullName: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
         
         if Auth.auth().currentUser == nil {
             GIDSignIn.sharedInstance().signIn()
-            
+            self.post()
         }
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UITabBarController
@@ -53,7 +54,7 @@ class ViewController: UIViewController, GIDSignInDelegate {
             // Perform any operations on signed in user here.
             userId = user.userID                  // For client-side use only!
             let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
+            fullName = user.profile.name
             let givenName = user.profile.givenName
             let familyName = user.profile.familyName
             let email = user.profile.email
@@ -66,7 +67,27 @@ class ViewController: UIViewController, GIDSignInDelegate {
         print(error.localizedDescription)
     }
     
-    
+    func post() {
+        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/user/create")
+        var request = URLRequest(url: purl!)
+        request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
+        // content-type を application/json に設定する
+        //request.addValue("application/json", forHTTPHeaderField: "content-type")
+        
+        let str: String = "firebase_uid=\(userId)&name=\(fullName)"
+        let myData: Data = str.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))! as Data
+        request.httpBody = myData as Data
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let object = try JSONSerialization.jsonObject(with: data, options: [])
+                print(object)
+            } catch let error {
+                print(error)
+            }
+        }
+        task.resume()
+    }
 
 
 }

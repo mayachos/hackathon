@@ -8,7 +8,10 @@
 import UIKit
 
 class TipsTableViewController: UITableViewController {
-    var user_Id: [Int] = []
+    
+    
+    var tips_id: [Int] = []
+    var user_Id: [String] = []
     var Title: [String] = []
     var comment: [String] = []
     
@@ -20,6 +23,7 @@ class TipsTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
         imageView.contentMode = .scaleAspectFit
         let image = UIImage(named: "logo")
@@ -27,7 +31,7 @@ class TipsTableViewController: UITableViewController {
         self.navigationController?.navigationBar.backIndicatorImage = image
         
         
-        let url: URL = URL(string: "https://evening-dawn-10921.herokuapp.com/tips/all")!
+        let url: URL = URL(string: "https://cryptic-gorge-02213.herokuapp.com/tips/all")!
         let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
             print("data: \(data)")
             print("response: \(response)")
@@ -45,9 +49,14 @@ class TipsTableViewController: UITableViewController {
                 let count = tips.count
                 // (F) for文で各記事のtitleを抜き出し、titleArray配列に追加
                 for i in 0..<count{
-                    var userid = 0
+                    var id = 0
                     if tips[i]["id"] != nil {
-                        userid = tips[i]["id"] as! Int
+                        id = tips[i]["id"] as! Int
+                        self.tips_id.append(id)
+                    }
+                    var userid = ""
+                    if tips[i]["user_id"] != nil {
+                        userid = tips[i]["user_id"] as? String ?? ""
                         self.user_Id.append(userid)
                     }
                     var title = ""
@@ -60,7 +69,7 @@ class TipsTableViewController: UITableViewController {
                         text = tips[i]["comment"] as? String ?? ""
                         self.comment.append(text)
                     }
-                    self.cellData.append(tips_cell_info(user_id: userid, title: title, comment: text))
+                    self.cellData.append(tips_cell_info(id: id, user_id: userid, title: title, comment: text))
                 }
                 DispatchQueue.main.async() { () -> Void in
                     self.tableView.reloadData()
@@ -117,20 +126,25 @@ class TipsTableViewController: UITableViewController {
         cell.setCell(info: cellData[indexPath.row])
         // Configure the cell...
         
+        cell.goodButton.tag = indexPath.row
+        
         return cell
     }
     
-    @IBAction func goodButton() {
+    @IBAction func goodB() {
+        let tipTableCell = TipsTableViewCell()
+        let image = UIImage(named: "heart")
+        tipTableCell.goodButton.setImage(image, for: .normal)
         
         self.post()
     }
     
     func post() {
         let VC = ViewController()
-        let purl = URL(string: "https://evening-dawn-10921.herokuapp.com/tips/replies/:tips_id")!
+        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/tips/like/\(VC.userId)")!
         var request = URLRequest(url: purl)
         request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
-        request.httpBody = "user_id=\(VC.userId)".data(using: .utf8)
+        request.httpBody = "user_id=\(VC.userId)&tips_id=\(tips_id)".data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             do {

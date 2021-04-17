@@ -9,12 +9,14 @@ import Foundation
 
 struct tips_cell_info {
     
-    var user_id: Int
+    var id: Int
+    var user_id: String
     var title: String
     var comment: String
     
-    init(user_id:Int, title: String, comment: String) {
+    init(id: Int, user_id:String, title: String, comment: String) {
         
+        self.id = id
         self.user_id = user_id
         self.title = title
         self.comment = comment

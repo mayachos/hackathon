@@ -21,7 +21,7 @@ class QuestionTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        let url: URL = URL(string: "https://evening-dawn-10921.herokuapp.com/questions/all")!
+        let url: URL = URL(string: "https://cryptic-gorge-02213.herokuapp.com/questions/all")!
         let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
             print("data: \(data)")
             print("response: \(response)")

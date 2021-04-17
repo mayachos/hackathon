@@ -32,7 +32,7 @@ class AddTipsViewController: UIViewController {
     
     func post() {
         let VC = ViewController()
-        let purl = URL(string: "https://evening-dawn-10921.herokuapp.com/tips/create/:user_id")
+        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/tips/create/\(VC.userId)")
         var request = URLRequest(url: purl!)
         request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
         // content-type を application/json に設定する

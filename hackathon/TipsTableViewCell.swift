@@ -14,6 +14,8 @@ class TipsTableViewCell: UITableViewCell {
     @IBOutlet var tipsText: UILabel!
     @IBOutlet var user_Image: UIImageView!
     
+    @IBOutlet var goodButton: UIButton!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +29,8 @@ class TipsTableViewCell: UITableViewCell {
     }
     
     func setCell(info: tips_cell_info) {
+        let heart = UIImage(named: "notheart")
+        goodButton.setImage(heart, for: .normal)
         user.text = String(info.user_id)
         title.text = String(info.title)
         tipsText.text = String(info.comment)
