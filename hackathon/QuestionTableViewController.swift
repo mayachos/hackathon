@@ -9,7 +9,7 @@ import UIKit
 
 class QuestionTableViewController: UITableViewController {
     
-    var user_Id: [String] = []
+    var user_Id: [Int] = []
     var Title: [String] = []
     var comment: [String] = []
     var answerId: [Int] = []
@@ -21,7 +21,7 @@ class QuestionTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        let url: URL = URL(string: "https://evening-dawn-10921.herokuapp.com/questions/:user_id")!
+        let url: URL = URL(string: "https://evening-dawn-10921.herokuapp.com/questions/all")!
         let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
             print("data: \(data)")
             print("response: \(response)")
@@ -41,13 +41,13 @@ class QuestionTableViewController: UITableViewController {
                 
                 // (F) for文で各記事のtitleを抜き出し、titleArray配列に追加
                 for i in 0..<count {
-                    let userid = ques[i]["user_id"] as! String
+                    let userid = ques[i]["user_id"] as! Int
                     self.user_Id.append(userid)
                     let title = ques[i]["title"] as! String
                     self.Title.append(title)
                     let text = ques[i]["comment"] as! String
                     self.comment.append(text)
-                    let answerid = ques[i]["answer_id"] as! Int
+                    let answerid = ques[i]["bestanswer_id"] as! Int
                     self.answerId.append(answerid)
                     print(title)
                     self.cellData.append(que_cell_info(user_id: userid, Title: title, comment: text, bestAnswerId: answerid))

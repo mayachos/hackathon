@@ -32,16 +32,14 @@ class AddTipsViewController: UIViewController {
     
     func post() {
         let VC = ViewController()
-        let purl = URL(string: "https://evening-dawn-10921.herokuapp.com/test")!
-        var request = URLRequest(url: purl)
+        let purl = URL(string: "https://evening-dawn-10921.herokuapp.com/tips/create/:user_id")
+        var request = URLRequest(url: purl!)
         request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
         // content-type を application/json に設定する
         //request.addValue("application/json", forHTTPHeaderField: "content-type")
         
         let str: String = "user_id=\(VC.userId)&title=\(titleText)&comment=\(urlText)"
         let myData: Data = str.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))! as Data
-        request.setValue("x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("\(myData.count)", forHTTPHeaderField: "Content-Length") // PostでContent-Lengthを設定する
         request.httpBody = myData as Data
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }

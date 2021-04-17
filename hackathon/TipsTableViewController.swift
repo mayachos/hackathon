@@ -45,13 +45,21 @@ class TipsTableViewController: UITableViewController {
                 let count = tips.count
                 // (F) for文で各記事のtitleを抜き出し、titleArray配列に追加
                 for i in 0..<count{
-                    let userid = tips[i]["id"] as! Int
-                    self.user_Id.append(userid)
-                    let title = tips[i]["title"] as! String
-                    self.Title.append(title)
-                    let text = tips[i]["comment"] as! String
-                    self.comment.append(text)
-                    print(title)
+                    var userid = 0
+                    if tips[i]["id"] != nil {
+                        userid = tips[i]["id"] as! Int
+                        self.user_Id.append(userid)
+                    }
+                    var title = ""
+                    if tips[i]["title"] != nil {
+                        title = tips[i]["title"] as? String ?? ""
+                        self.Title.append(title)
+                    }
+                    var text = ""
+                    if tips[i]["comment"] != nil{
+                        text = tips[i]["comment"] as? String ?? ""
+                        self.comment.append(text)
+                    }
                     self.cellData.append(tips_cell_info(user_id: userid, title: title, comment: text))
                 }
                 DispatchQueue.main.async() { () -> Void in
