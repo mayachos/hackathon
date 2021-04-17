@@ -12,7 +12,7 @@ import GoogleSignIn
 class ViewController: UIViewController, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: UIButton!
-    var userId: String!
+    var userId: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()

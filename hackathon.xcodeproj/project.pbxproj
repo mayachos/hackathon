@@ -18,6 +18,7 @@
 		637211A8262AABAC00FAC18E /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 637211A7262AABAC00FAC18E /* logo.png */; };
 		637211B6262AB36600FAC18E /* ques.png in Resources */ = {isa = PBXBuildFile; fileRef = 637211B4262AB36600FAC18E /* ques.png */; };
 		637211BA262AB3D200FAC18E /* excla.png in Resources */ = {isa = PBXBuildFile; fileRef = 637211B9262AB3D200FAC18E /* excla.png */; };
+		637211BF262B10CF00FAC18E /* AddTipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637211BE262B10CF00FAC18E /* AddTipsViewController.swift */; };
 		63C30A7C2629BC1400CF565F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C30A7B2629BC1400CF565F /* AppDelegate.swift */; };
 		63C30A7E2629BC1400CF565F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C30A7D2629BC1400CF565F /* SceneDelegate.swift */; };
 		63C30A802629BC1400CF565F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C30A7F2629BC1400CF565F /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 		637211A7262AABAC00FAC18E /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		637211B4262AB36600FAC18E /* ques.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ques.png; sourceTree = "<group>"; };
 		637211B9262AB3D200FAC18E /* excla.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = excla.png; sourceTree = "<group>"; };
+		637211BE262B10CF00FAC18E /* AddTipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTipsViewController.swift; sourceTree = "<group>"; };
 		63C30A782629BC1400CF565F /* hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C30A7B2629BC1400CF565F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C30A7D2629BC1400CF565F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				63C30A7B2629BC1400CF565F /* AppDelegate.swift */,
 				63C30A7D2629BC1400CF565F /* SceneDelegate.swift */,
 				63C30A7F2629BC1400CF565F /* ViewController.swift */,
+				637211BE262B10CF00FAC18E /* AddTipsViewController.swift */,
 				634D5FE62629C64F00D95D54 /* TipsTableViewController.swift */,
 				634D5FE92629C8B700D95D54 /* TipsTableViewCell.swift */,
 				634D5FF12629D02500D95D54 /* tips_cell_Info.swift */,
@@ -265,6 +268,7 @@
 				63C30A802629BC1400CF565F /* ViewController.swift in Sources */,
 				63C30A7C2629BC1400CF565F /* AppDelegate.swift in Sources */,
 				63C30A7E2629BC1400CF565F /* SceneDelegate.swift in Sources */,
+				637211BF262B10CF00FAC18E /* AddTipsViewController.swift in Sources */,
 				634D5FEA2629C8B700D95D54 /* TipsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
