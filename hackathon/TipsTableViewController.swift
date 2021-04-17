@@ -8,9 +8,9 @@
 import UIKit
 
 class TipsTableViewController: UITableViewController {
-    var user_Id: [String]!
-    var Title: [String]!
-    var comment: [String]!
+    var user_Id: [Int] = []
+    var Title: [String] = []
+    var comment: [String] = []
     
     
     var cellData = [tips_cell_info]()
@@ -34,31 +34,31 @@ class TipsTableViewController: UITableViewController {
                print("error: \(error)")
 
             do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+                let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [Any]
                 print(json)
                 // (D) Any型の配列に変換したものを、[String: Any]の辞書型にダウンキャスト
-//                       let tips = json.map { (tips) -> [String: Any] in
-//                           return tips as! [String: Any]
-//                       }
-//
-//                // (E) 記事の総数をcountと定義する
-//                let count = tips.count
-//
-//
-//                                // (F) for文で各記事のtitleを抜き出し、titleArray配列に追加
-//                for i in 0...count-1 {
-//                            let userid = tips[i]["user_id"] as! String
-//                            self.user_Id.append(userid)
-//                            let title = tips[i]["title"] as! String
-//                            self.Title.append(title)
-//                            let text = tips[i]["comment"] as! String
-//                            self.Title.append(text)
-//                            print(title)
-//                            self.cellData.append(tips_cell_info(user_id: userid, title: title, comment: text))
-//                                }
-//                DispatchQueue.main.async() { () -> Void in
-//                    self.tableView.reloadData()
-//                }
+                       let tips = json.map { (tips) -> [String: Any] in
+                           return tips as! [String: Any]
+                       }
+
+                // (E) 記事の総数をcountと定義する
+                let count = tips.count
+
+
+                                // (F) for文で各記事のtitleを抜き出し、titleArray配列に追加
+                for i in 0..<count{
+                    let userid = tips[i]["id"] as! Int
+                    self.user_Id.append(userid)
+                    let title = tips[i]["title"] as! String
+                    self.Title.append(title)
+                    let text = tips[i]["comment"] as! String
+                    self.comment.append(text)
+                    print(title)
+                    self.cellData.append(tips_cell_info(user_id: userid, title: title, comment: text))
+                                }
+                DispatchQueue.main.async() { () -> Void in
+                    self.tableView.reloadData()
+                }
             }
             catch {
                 print(error)
