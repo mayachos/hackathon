@@ -10,7 +10,7 @@ import UIKit
 class QuestionTableViewCell: UITableViewCell {
     
     @IBOutlet var user: UILabel!
-    @IBOutlet var category: UILabel!
+    @IBOutlet var Title: UILabel!
     @IBOutlet var quesText: UILabel!
     @IBOutlet var ansewerId: UILabel!
     @IBOutlet var user_Image: UIImageView!
@@ -28,7 +28,7 @@ class QuestionTableViewCell: UITableViewCell {
     
     func setCell(info: que_cell_info) {
         user.text = String(info.user_id)
-        category.text = String(info.category_id)
+        Title.text = String(info.Title)
         quesText.text = String(info.comment)
         ansewerId.text = String(info.bestAnswerId)
         

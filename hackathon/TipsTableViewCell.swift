@@ -10,7 +10,7 @@ import UIKit
 class TipsTableViewCell: UITableViewCell {
     
     @IBOutlet var user: UILabel!
-    @IBOutlet var category: UILabel!
+    @IBOutlet var title: UILabel!
     @IBOutlet var tipsText: UILabel!
     @IBOutlet var user_Image: UIImageView!
     
@@ -28,7 +28,7 @@ class TipsTableViewCell: UITableViewCell {
     
     func setCell(info: tips_cell_info) {
         user.text = String(info.user_id)
-        category.text = String(info.category_id)
+        title.text = String(info.title)
         tipsText.text = String(info.comment)
     }
 

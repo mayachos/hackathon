@@ -8,10 +8,9 @@
 import UIKit
 
 class TipsTableViewController: UITableViewController {
-    
-    var user_id: Int!
-    var category_id: Int!
-    var comment: String!
+    var user_Id: [String]!
+    var Title: [String]!
+    var comment: [String]!
     
     
     var cellData = [tips_cell_info]()
@@ -21,16 +20,51 @@ class TipsTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-//        let url: URL = URL(string: "")!
-//        let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
-//               print("data: \(data)")
-//               print("response: \(response)")
-//               print("error: \(error)")
-//           })
-//        task.resume()
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 5, height: 10))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "logo")
+        imageView.image = image
+        self.navigationController?.navigationBar.backIndicatorImage = image
         
-        cellData.append(tips_cell_info(user_id: 1111, category_id: 2222, comment: "text"))
+        
+        let url: URL = URL(string: "https://evening-dawn-10921.herokuapp.com/tips/all")!
+        let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
+            print("data: \(data)")
+               print("response: \(response)")
+               print("error: \(error)")
 
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+                print(json)
+                // (D) Any型の配列に変換したものを、[String: Any]の辞書型にダウンキャスト
+//                       let tips = json.map { (tips) -> [String: Any] in
+//                           return tips as! [String: Any]
+//                       }
+//
+//                // (E) 記事の総数をcountと定義する
+//                let count = tips.count
+//
+//
+//                                // (F) for文で各記事のtitleを抜き出し、titleArray配列に追加
+//                for i in 0...count-1 {
+//                            let userid = tips[i]["user_id"] as! String
+//                            self.user_Id.append(userid)
+//                            let title = tips[i]["title"] as! String
+//                            self.Title.append(title)
+//                            let text = tips[i]["comment"] as! String
+//                            self.Title.append(text)
+//                            print(title)
+//                            self.cellData.append(tips_cell_info(user_id: userid, title: title, comment: text))
+//                                }
+//                DispatchQueue.main.async() { () -> Void in
+//                    self.tableView.reloadData()
+//                }
+            }
+            catch {
+                print(error)
+            }
+           })
+        task.resume()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -43,6 +77,16 @@ class TipsTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
+    }
+    // Set the spacing between sections
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 10
+    }
+    // Make the background color show through
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            let headerView = UIView()
+            headerView.backgroundColor = UIColor.clear
+            return headerView
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,6 +101,7 @@ class TipsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TipsTableViewCell
 
+        
         cell.layer.cornerRadius = 5.0
         cell.layer.borderWidth = 3.0
         cell.layer.borderColor = #colorLiteral(red: 0.3470362425, green: 0.7739748359, blue: 0.7306001782, alpha: 1)
@@ -64,6 +109,22 @@ class TipsTableViewController: UITableViewController {
         // Configure the cell...
 
         return cell
+    }
+    
+    func post() {
+        let purl = URL(string: "https://evening-dawn-10921.herokuapp.com/test")!
+        var request = URLRequest(url: purl)
+        request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let object = try JSONSerialization.jsonObject(with: data, options: [])
+                print(object)
+            } catch let error {
+                print(error)
+            }
+        }
+        task.resume()
     }
 
     /*

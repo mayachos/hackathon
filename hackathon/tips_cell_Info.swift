@@ -7,16 +7,17 @@
 
 import Foundation
 
-class tips_cell_info: NSObject {
+struct tips_cell_info {
     
-    var user_id: Int
-    var category_id: Int
+    var user_id: String
+    var title: String
     var comment: String
     
-    init(user_id:Int, category_id: Int, comment: String) {
+    init(user_id:String, title: String, comment: String) {
         
         self.user_id = user_id
-        self.category_id = category_id
+        self.title = title
         self.comment = comment
     }
+    
 }

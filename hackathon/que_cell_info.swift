@@ -7,17 +7,17 @@
 
 import Foundation
 
-class que_cell_info: NSObject {
+struct que_cell_info {
     
-    var user_id: Int
-    var category_id: Int
+    var user_id: String
+    var Title: String
     var comment: String
     var bestAnswerId: Int
     
-    init(user_id:Int, category_id: Int, comment: String, bestAnswerId: Int) {
+    init(user_id:String, Title: String, comment: String, bestAnswerId: Int) {
         
         self.user_id = user_id
-        self.category_id = category_id
+        self.Title = Title
         self.comment = comment
         self.bestAnswerId = bestAnswerId
     }
