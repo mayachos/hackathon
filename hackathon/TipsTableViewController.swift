@@ -20,13 +20,13 @@ class TipsTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-//        let url: URL = URL(string: "")!
-//        let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
-//               print("data: \(data)")
-//               print("response: \(response)")
-//               print("error: \(error)")
-//           })
-//        task.resume()
+        let url: URL = URL(string: "")!
+        let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
+               print("data: \(data)")
+               print("response: \(response)")
+               print("error: \(error)")
+           })
+        task.resume()
         
         cellData.append(tips_cell_info(user_id: 1111, category_id: 2222, comment: "text"))
 

@@ -124,6 +124,7 @@
 				63C30A752629BC1400CF565F /* Frameworks */,
 				63C30A762629BC1400CF565F /* Resources */,
 				32A55B8AA7CB1F11AAD59645 /* [CP] Embed Pods Frameworks */,
+				2B2709221C236C65D62BF142 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,6 +182,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2B2709221C236C65D62BF142 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-hackathon/Pods-hackathon-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-hackathon/Pods-hackathon-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hackathon/Pods-hackathon-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		32A55B8AA7CB1F11AAD59645 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
