@@ -86,8 +86,11 @@ class TipsTableViewController: UITableViewController {
     }
     // Set the spacing between sections
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 20
     }
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+           return 10 // セルの下部のスペース
+       }
     // Make the background color show through
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
