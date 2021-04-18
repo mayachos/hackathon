@@ -131,31 +131,7 @@ class TipsTableViewController: UITableViewController {
         return cell
     }
     
-    @IBAction func goodB() {
-        let tipTableCell = TipsTableViewCell()
-        let image = UIImage(named: "heart")
-        tipTableCell.goodButton.setImage(image, for: .normal)
-        
-        self.post()
-    }
-    
-    func post() {
-        let VC = ViewController()
-        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/tips/like/\(VC.userId)")!
-        var request = URLRequest(url: purl)
-        request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
-        request.httpBody = "user_id=\(VC.userId)&tips_id=\(tips_id)".data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return }
-            do {
-                let object = try JSONSerialization.jsonObject(with: data, options: [])
-                print(object)
-            } catch let error {
-                print(error)
-            }
-        }
-        task.resume()
-    }
+
     
     /*
      // Override to support conditional editing of the table view.

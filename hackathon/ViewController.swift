@@ -12,6 +12,7 @@ import GoogleSignIn
 class ViewController: UIViewController, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: UIButton!
+    var UserDefault = UserDefaults.standard
     var userId: String = ""
     var fullName: String = ""
 
@@ -29,6 +30,12 @@ class ViewController: UIViewController, GIDSignInDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.userInfo()
+        UserDefault.setValue(userId, forKey: "userId")
+        UserDefault.setValue(fullName, forKey: "fullName")
+        print(userId)
+        self.post()
         if Auth.auth().currentUser != nil {
             let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UITabBarController
             self.present(secondViewController, animated: true, completion: nil)
@@ -45,6 +52,25 @@ class ViewController: UIViewController, GIDSignInDelegate {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! UITabBarController
         self.present(secondViewController, animated: true, completion: nil)
         
+    }
+    
+    func userInfo() {
+        let user = Auth.auth().currentUser
+        if let user = user {
+          // The user's ID, unique to the Firebase project.
+          // Do NOT use this value to authenticate with your backend server,
+          // if you have one. Use getTokenWithCompletion:completion: instead.
+            userId = user.uid
+            fullName = user.displayName ?? ""
+          //let email = user.email
+          //let photoURL = user.photoURL
+          var multiFactorString = "MultiFactor: "
+          for info in user.multiFactor.enrolledFactors {
+            multiFactorString += info.displayName ?? "[DispayName]"
+            multiFactorString += " "
+          }
+          // ...
+        }
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -73,7 +99,6 @@ class ViewController: UIViewController, GIDSignInDelegate {
         request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
         // content-type を application/json に設定する
         //request.addValue("application/json", forHTTPHeaderField: "content-type")
-        
         let str: String = "firebase_uid=\(userId)&name=\(fullName)"
         let myData: Data = str.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))! as Data
         request.httpBody = myData as Data

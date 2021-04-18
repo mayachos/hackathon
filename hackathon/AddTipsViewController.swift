@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddTipsViewController: UIViewController {
     
@@ -14,6 +15,7 @@ class AddTipsViewController: UIViewController {
     
     var titleText: String = ""
     var urlText: String = ""
+    var userDefault = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +33,15 @@ class AddTipsViewController: UIViewController {
     }
     
     func post() {
-        let VC = ViewController()
-        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/tips/create/\(VC.userId)")
+        let userId = userDefault.string(forKey: "userId")
+        print(userId!)
+        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/tips/create/\(userId!)")
         var request = URLRequest(url: purl!)
         request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
         // content-type を application/json に設定する
         //request.addValue("application/json", forHTTPHeaderField: "content-type")
         
-        let str: String = "user_id=\(VC.userId)&title=\(titleText)&comment=\(urlText)"
+        let str: String = "user_id=\(userId!)&title=\(titleText)&comment=\(urlText)"
         let myData: Data = str.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))! as Data
         request.httpBody = myData as Data
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -51,6 +54,18 @@ class AddTipsViewController: UIViewController {
             }
         }
         task.resume()
+    }
+    
+    @IBAction func logout() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! ViewController
+        self.present(secondViewController, animated: true, completion: nil)
     }
     
 

@@ -35,5 +35,34 @@ class TipsTableViewCell: UITableViewCell {
         title.text = String(info.title)
         tipsText.text = String(info.comment)
     }
+    
+    @IBAction func goodB() {
+        let image = UIImage(named: "heart")
+        goodButton.setImage(image, for: .normal)
+        
+        self.post()
+    }
+    
+    func post() {
+        let VC = ViewController()
+        let TVC = TipsTableViewController()
+        print(VC.userId)
+        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/tips/like/\(VC.userId)")!
+        var request = URLRequest(url: purl)
+        request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
+        let str: String = "user_id=\(VC.userId)&tips_id=\(TVC.tips_id)"
+        let myData: Data = str.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))! as Data
+        request.httpBody = myData as Data
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let object = try JSONSerialization.jsonObject(with: data, options: [])
+                print(object)
+            } catch let error {
+                print(error)
+            }
+        }
+        task.resume()
+    }
 
 }

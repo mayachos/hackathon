@@ -33,5 +33,13 @@ class QuestionTableViewCell: UITableViewCell {
         ansewerId.text = String(info.bestAnswerId)
         
     }
+    
+    @IBAction func answer() {
+        
+    }
+    
+    func post() {
+        
+    }
 
 }
