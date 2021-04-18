@@ -21,7 +21,7 @@ class addQuesViewController: UIViewController {
         super.viewDidLoad()
 
         // 枠のカラー
-        quesTextView.layer.borderColor = #colorLiteral(red: 0.3470362425, green: 0.7739748359, blue: 0.7306001782, alpha: 1)
+        quesTextView.layer.borderColor = #colorLiteral(red: 0.09411764706, green: 0.368627451, blue: 0.6392156863, alpha: 1)
         
         // 枠の幅
         quesTextView.layer.borderWidth = 5.0

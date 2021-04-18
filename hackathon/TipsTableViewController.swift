@@ -66,7 +66,11 @@ class TipsTableViewController: UITableViewController {
                     if tips[i]["comment"] != nil{
                         text = tips[i]["comment"] as? String ?? ""
                     }
-                    self.cellData.append(tips_cell_info(id: id, user_id: userid, username: username, title: title, comment: text))
+                    var category = ""
+                    if tips[i]["category"] != nil{
+                        category = tips[i]["category"] as? String ?? ""
+                    }
+                    self.cellData.append(tips_cell_info(id: id, user_id: userid, username: username, title: title, comment: text,category: category))
                 }
                 DispatchQueue.main.async() { () -> Void in
                     self.tableView.reloadData()
@@ -84,7 +88,7 @@ class TipsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
+  
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {

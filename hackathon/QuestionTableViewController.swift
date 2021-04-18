@@ -11,12 +11,23 @@ class QuestionTableViewController: UITableViewController {
     
     
     var cellData = [que_cell_info]()
+    var answerData = [[answer_cell_info]]()
+    var questionCount = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
         
+        self.questionGet()
+        self.AnswerGet()
+        
+        // cellData.append(que_cell_info(user_id: user_Id, Title: Title, comment: comment, bestAnswerId: answerId))
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    func questionGet() {
         let url: URL = URL(string: "https://cryptic-gorge-02213.herokuapp.com/questions/all")!
         let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
             print("data: \(data)")
@@ -33,8 +44,9 @@ class QuestionTableViewController: UITableViewController {
                 
                 // (E) 記事の総数をcountと定義する
                 let count = ques.count
+                self.questionCount = count
                 
-                
+             
                 // (F) for文で各記事のtitleを抜き出し、titleArray配列に追加
                 for i in 0..<count {
                     var id = 0
@@ -75,11 +87,63 @@ class QuestionTableViewController: UITableViewController {
             }
         })
         task.resume()
-        
-        // cellData.append(que_cell_info(user_id: user_Id, Title: Title, comment: comment, bestAnswerId: answerId))
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    func AnswerGet() {
+        for j in 1..<questionCount {
+            let url: URL = URL(string: "https://cryptic-gorge-02213.herokuapp.com/questions/answer/\(j)")!
+            let task: URLSessionTask = URLSession.shared.dataTask(with: url, completionHandler: {(data, response, error) in
+                print("data: \(data)")
+                print("response: \(response)")
+                print("error: \(error)")
+                
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [Any]
+                    print(json)
+                    //(D) Any型の配列に変換したものを、[String: Any]の辞書型にダウンキャスト
+                    let ans = json.map { (ans) -> [String: Any] in
+                        return ans as! [String: Any]
+                    }
+                    
+                    
+                    // (E) 記事の総数をcountと定義する
+                    let count = ans.count
+                    
+                    // (F) for文で各記事のtitleを抜き出し、titleArray配列に追加
+                    for i in 0..<count {
+                        var que_id = 0
+                        if ans[i]["question_id"] != nil {
+                            que_id = ans[i]["question_id"] as! Int
+                        }
+                        var userid = 0
+                        if ans[i]["user_id"] != nil {
+                            userid = ans[i]["user_id"] as! Int
+                        }
+                        var username = ""
+                        if ans[i]["user_name"] != nil {
+                            username = ans[i]["user_name"] as? String ?? ""
+                        }
+                        var text = ""
+                        if ans[i]["comment"] != nil{
+                            text = ans[i]["comment"] as? String ?? ""
+                        }
+                        print(que_id)
+                        //                    let answerid = ques[i]["bestanswer_id"] as! Int
+                        //                    self.answerId.append(answerid)
+                        self.answerData[j].append(answer_cell_info(username: username, user_id: userid, ques_id: que_id, comment: text))
+                    }
+                    DispatchQueue.main.async() { () -> Void in
+                        self.tableView.reloadData()
+                    }
+                }
+                catch {
+                    print(error)
+                }
+            })
+            task.resume()
+        }
+    }
+    
     
     // MARK: - Table view data source
     
@@ -103,11 +167,22 @@ class QuestionTableViewController: UITableViewController {
         cell.layer.cornerRadius = 5.0
         cell.layer.borderWidth = 3.0
         cell.layer.borderColor = #colorLiteral(red: 0, green: 0.3294117647, blue: 0.5921568627, alpha: 1)
-        cell.setCell(info: cellData[indexPath.row])
+        if !answerData.isEmpty {
+        cell.setCell(info: cellData[indexPath.row], answer: answerData[0][0])
+        } else {
+            cell.setQueCell(info: cellData[indexPath.row])
+        }
         
         // Configure the cell...
         
         return cell
+    }
+    
+    @IBAction func answer(_ sender: Any) {
+        let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "answerStoryBoard") as! AddAnswerViewController
+        nextVC.cellTag = QuestionTableViewCell().buttonTag
+        print(QuestionTableViewCell().buttonTag)
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     /*

@@ -14,14 +14,16 @@ struct tips_cell_info {
     var user_name: String
     var title: String
     var comment: String
+    var category: String
     
-    init(id: Int, user_id:String, username: String, title: String, comment: String) {
+    init(id: Int, user_id:String, username: String, title: String, comment: String, category: String) {
         
         self.id = id
         self.user_id = user_id
         self.title = title
         self.comment = comment
         self.user_name = username
+        self.category  = category
     }
     
 }

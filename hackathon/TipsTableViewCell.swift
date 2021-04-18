@@ -12,6 +12,7 @@ class TipsTableViewCell: UITableViewCell {
     @IBOutlet var user: UILabel!
     @IBOutlet var title: UILabel!
     @IBOutlet var tipsText: UILabel!
+    @IBOutlet var categoryText: UILabel!
     @IBOutlet var user_Image: UIImageView!
     
     var id = 0
@@ -37,10 +38,17 @@ class TipsTableViewCell: UITableViewCell {
         user.text = String(info.user_name)
         title.text = String(info.title)
         tipsText.text = String(info.comment)
+        categoryText.text = String(info.category)
+        
         id = info.id
+        
     }
     
+
+    
     @IBAction func goodB() {
+        
+        
         let image = UIImage(named: "heart")
         goodButton.setImage(image, for: .normal)
         
@@ -50,7 +58,7 @@ class TipsTableViewCell: UITableViewCell {
     func post() {
         let userId = userDefault.string(forKey: "userId")
         print(userId!)
-        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/tips/like/\(userId!)")!
+        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/tips/like/create/\(userId!)")!
         var request = URLRequest(url: purl)
         request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
         print(id)

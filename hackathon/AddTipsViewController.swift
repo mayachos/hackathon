@@ -12,21 +12,23 @@ class AddTipsViewController: UIViewController {
     
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var urlTextField: UITextField!
+    @IBOutlet var categoryField: UITextField!
     
     var titleText: String = ""
     var urlText: String = ""
+    var categoryText: String = ""
     var userDefault = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(TipsTableViewController().cellData[0].comment)
         // Do any additional setup after loading the view.
     }
     
     @IBAction func postButton() {
         titleText = titleTextField.text!
         urlText = urlTextField.text!
+        categoryText = categoryField.text!
         
         self.post()
         
@@ -42,7 +44,7 @@ class AddTipsViewController: UIViewController {
         // content-type を application/json に設定する
         //request.addValue("application/json", forHTTPHeaderField: "content-type")
         
-        let str: String = "user_id=\(userId!)&title=\(titleText)&comment=\(urlText)"
+        let str: String = "user_id=\(userId!)&title=\(titleText)&comment=\(urlText)&categories=\(categoryText)"
         let myData: Data = str.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))! as Data
         request.httpBody = myData as Data
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

@@ -19,11 +19,17 @@ class AddAnswerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(cellTag)
+        print(cellTag!)
         // Do any additional setup after loading the view.
     }
     
 
+    @IBAction func postAnswer() {
+        answerText = answerTextView.text!
+        
+        self.post()
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
@@ -37,13 +43,13 @@ class AddAnswerViewController: UIViewController {
     func post() {
         let userId = userDefault.string(forKey: "userId")
         print(userId!)
-        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/tips/create/\(userId!)")
+        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/questions/answer/create/\(userId!)")
         var request = URLRequest(url: purl!)
         request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
         // content-type を application/json に設定する
         //request.addValue("application/json", forHTTPHeaderField: "content-type")
         
-        let str: String = "user_id=\(userId!)&comment=\(answerText)&question_id="
+        let str: String = "user_id=\(userId!)&comment=\(answerText!)&question_id=\(cellTag!)"
         let myData: Data = str.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))! as Data
         request.httpBody = myData as Data
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
