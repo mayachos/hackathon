@@ -14,6 +14,8 @@ class QuestionTableViewCell: UITableViewCell {
     @IBOutlet var quesText: UILabel!
     @IBOutlet var ansewerId: UILabel!
     @IBOutlet var user_Image: UIImageView!
+    
+    var buttonTag: Int!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,19 +29,19 @@ class QuestionTableViewCell: UITableViewCell {
     }
     
     func setCell(info: que_cell_info) {
-        user.text = String(info.user_id)
+        user.text = String(info.user_name)
         Title.text = String(info.Title)
         quesText.text = String(info.comment)
         ansewerId.text = String(info.bestAnswerId)
         
+        buttonTag = info.id
     }
     
-    @IBAction func answer() {
+    @IBAction func answer(_ sender: Any) {
+        let nextVC = AddAnswerViewController()
+        nextVC.cellTag = buttonTag
         
     }
     
-    func post() {
-        
-    }
 
 }

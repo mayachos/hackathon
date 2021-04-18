@@ -9,10 +9,6 @@ import UIKit
 
 class QuestionTableViewController: UITableViewController {
     
-    var user_Id: [Int] = []
-    var Title: [String] = []
-    var comment: [String] = []
-    var answerId: [Int] = []
     
     var cellData = [que_cell_info]()
     
@@ -41,16 +37,34 @@ class QuestionTableViewController: UITableViewController {
                 
                 // (F) for文で各記事のtitleを抜き出し、titleArray配列に追加
                 for i in 0..<count {
-                    let userid = ques[i]["user_id"] as! Int
-                    self.user_Id.append(userid)
-                    let title = ques[i]["title"] as! String
-                    self.Title.append(title)
-                    let text = ques[i]["comment"] as! String
-                    self.comment.append(text)
-                    let answerid = ques[i]["bestanswer_id"] as! Int
-                    self.answerId.append(answerid)
+                    var id = 0
+                    if ques[i]["id"] != nil {
+                        id = ques[i]["id"] as! Int
+                    }
+                    var userid = 0
+                    if ques[i]["user_id"] != nil {
+                        userid = ques[i]["user_id"] as! Int
+                    }
+                    var username = ""
+                    if ques[i]["user_name"] != nil {
+                        username = ques[i]["user_name"] as? String ?? ""
+                    }
+                    var title = ""
+                    if ques[i]["title"] != nil {
+                        title = ques[i]["title"] as? String ?? ""
+                    }
+                    var text = ""
+                    if ques[i]["comment"] != nil{
+                        text = ques[i]["comment"] as? String ?? ""
+                    }
+                    var answer = 0
+                    if ques[i]["bestanswer_id"] != nil{
+                        answer = ques[i]["bestanswer_id"] as! Int
+                    }
+//                    let answerid = ques[i]["bestanswer_id"] as! Int
+//                    self.answerId.append(answerid)
                     print(title)
-                    self.cellData.append(que_cell_info(user_id: userid, Title: title, comment: text, bestAnswerId: answerid))
+                    self.cellData.append(que_cell_info(id: id, user_id: userid, user_name: username, Title: title, comment: text, bestAnswerId: answer))
                 }
                 DispatchQueue.main.async() { () -> Void in
                     self.tableView.reloadData()

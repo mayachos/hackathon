@@ -20,6 +20,7 @@ class AddTipsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print(TipsTableViewController().cellData[0].comment)
         // Do any additional setup after loading the view.
     }
     

@@ -12,6 +12,8 @@ class addQuesViewController: UIViewController {
     @IBOutlet var titleTextField: UITextField!
     @IBOutlet var quesTextView: UITextView!
     
+    var userdefault = UserDefaults.standard
+    
     var titleText: String = ""
     var quesText: String = ""
 
@@ -39,14 +41,15 @@ class addQuesViewController: UIViewController {
     }
 
     func post() {
-        let VC = ViewController()
-        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/questions/create/refers/:id")
+        let userid = userdefault.string(forKey: "userId")
+        
+        let purl = URL(string: "https://cryptic-gorge-02213.herokuapp.com/questions/create/\(userid!)")
         var request = URLRequest(url: purl!)
         request.httpMethod = "POST"      // Postリクエストを送る(このコードがないとGetリクエストになる)
         // content-type を application/json に設定する
         //request.addValue("application/json", forHTTPHeaderField: "content-type")
         
-        let str: String = "user_id=\(VC.userId)&title=\(titleText)&comment=\(quesText)"
+        let str: String = "user_id=\(userid!)&title=\(titleText)&comment=\(quesText)"
         let myData: Data = str.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue))! as Data
         request.httpBody = myData as Data
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

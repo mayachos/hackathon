@@ -9,11 +9,8 @@ import UIKit
 
 class TipsTableViewController: UITableViewController {
     
+    var userDefault = UserDefaults.standard
     
-    var tips_id: [Int] = []
-    var user_Id: [String] = []
-    var Title: [String] = []
-    var comment: [String] = []
     
     
     var cellData = [tips_cell_info]()
@@ -47,32 +44,33 @@ class TipsTableViewController: UITableViewController {
                 
                 // (E) 記事の総数をcountと定義する
                 let count = tips.count
-                // (F) for文で各記事のtitleを抜き出し、titleArray配列に追加
+                // (F) for文で各記事のtitleを抜き出し、cellData配列に追加
                 for i in 0..<count{
                     var id = 0
                     if tips[i]["id"] != nil {
                         id = tips[i]["id"] as! Int
-                        self.tips_id.append(id)
                     }
                     var userid = ""
                     if tips[i]["user_id"] != nil {
                         userid = tips[i]["user_id"] as? String ?? ""
-                        self.user_Id.append(userid)
+                    }
+                    var username = ""
+                    if tips[i]["user_name"] != nil {
+                        username = tips[i]["user_name"] as? String ?? ""
                     }
                     var title = ""
                     if tips[i]["title"] != nil {
                         title = tips[i]["title"] as? String ?? ""
-                        self.Title.append(title)
                     }
                     var text = ""
                     if tips[i]["comment"] != nil{
                         text = tips[i]["comment"] as? String ?? ""
-                        self.comment.append(text)
                     }
-                    self.cellData.append(tips_cell_info(id: id, user_id: userid, title: title, comment: text))
+                    self.cellData.append(tips_cell_info(id: id, user_id: userid, username: username, title: title, comment: text))
                 }
                 DispatchQueue.main.async() { () -> Void in
                     self.tableView.reloadData()
+                    print()
                 }
             }
             catch {

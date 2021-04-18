@@ -22,6 +22,8 @@
 		637211C3262B366000FAC18E /* addQuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637211C2262B366000FAC18E /* addQuesViewController.swift */; };
 		637211C8262B426600FAC18E /* notheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 637211C6262B426500FAC18E /* notheart.png */; };
 		637211C9262B426600FAC18E /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 637211C7262B426600FAC18E /* heart.png */; };
+		637211E6262BD9E700FAC18E /* answer_cell_info.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637211E5262BD9E700FAC18E /* answer_cell_info.swift */; };
+		637211E9262BDDA800FAC18E /* AddAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637211E8262BDDA800FAC18E /* AddAnswerViewController.swift */; };
 		63C30A7C2629BC1400CF565F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C30A7B2629BC1400CF565F /* AppDelegate.swift */; };
 		63C30A7E2629BC1400CF565F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C30A7D2629BC1400CF565F /* SceneDelegate.swift */; };
 		63C30A802629BC1400CF565F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C30A7F2629BC1400CF565F /* ViewController.swift */; };
@@ -47,6 +49,8 @@
 		637211C2262B366000FAC18E /* addQuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addQuesViewController.swift; sourceTree = "<group>"; };
 		637211C6262B426500FAC18E /* notheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notheart.png; sourceTree = "<group>"; };
 		637211C7262B426600FAC18E /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		637211E5262BD9E700FAC18E /* answer_cell_info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = answer_cell_info.swift; sourceTree = "<group>"; };
+		637211E8262BDDA800FAC18E /* AddAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnswerViewController.swift; sourceTree = "<group>"; };
 		63C30A782629BC1400CF565F /* hackathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C30A7B2629BC1400CF565F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C30A7D2629BC1400CF565F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +114,9 @@
 				637211C2262B366000FAC18E /* addQuesViewController.swift */,
 				6372117C2629DFFE00FAC18E /* QuestionTableViewController.swift */,
 				637211812629E01F00FAC18E /* QuestionTableViewCell.swift */,
+				637211E8262BDDA800FAC18E /* AddAnswerViewController.swift */,
 				637211842629E04A00FAC18E /* que_cell_info.swift */,
+				637211E5262BD9E700FAC18E /* answer_cell_info.swift */,
 				63C30A812629BC1400CF565F /* Main.storyboard */,
 				637211C6262B426500FAC18E /* notheart.png */,
 				637211C7262B426600FAC18E /* heart.png */,
@@ -276,8 +282,10 @@
 				6372117D2629DFFE00FAC18E /* QuestionTableViewController.swift in Sources */,
 				634D5FE72629C64F00D95D54 /* TipsTableViewController.swift in Sources */,
 				637211C3262B366000FAC18E /* addQuesViewController.swift in Sources */,
+				637211E9262BDDA800FAC18E /* AddAnswerViewController.swift in Sources */,
 				637211852629E04A00FAC18E /* que_cell_info.swift in Sources */,
 				63C30A802629BC1400CF565F /* ViewController.swift in Sources */,
+				637211E6262BD9E700FAC18E /* answer_cell_info.swift in Sources */,
 				63C30A7C2629BC1400CF565F /* AppDelegate.swift in Sources */,
 				63C30A7E2629BC1400CF565F /* SceneDelegate.swift in Sources */,
 				637211BF262B10CF00FAC18E /* AddTipsViewController.swift in Sources */,
